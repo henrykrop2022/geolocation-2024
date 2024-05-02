@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('Checkout'){
             steps{
-                git branch: 'main', url: 'https://github.com/henrykrop2022/helloworld_jan_24.git'
+                git branch: 'main', url: 'https://github.com/henrykrop2022/geolocation-2024.git'
             }
         }
         stage('Code Build') {
@@ -24,13 +24,13 @@ pipeline {
                 sh 'mvn test'
             }
         }
-      stage("SonarQube scan"){
-        steps{
-          withSonarQubeEnv('sonarQube') {
-          sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=henrykrop2022_geolocation-2024'
-           }
-        }   
-      }
+      // stage("SonarQube scan"){
+      //   steps{
+      //     withSonarQubeEnv('sonarQube') {
+      //     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=henrykrop2022_geolocation-2024'
+      //      }
+      //   }   
+      // }
         stage('Build Image') {
             steps {
                 script{
